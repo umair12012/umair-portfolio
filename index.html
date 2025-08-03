@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Muhammad Umair | Frontend Developer Portfolio</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Muhammad Umair's official portfolio. Frontend Developer with 3 years at Aptech and hands-on training from SMIT. Firebase, Bootstrap & React expert." />
+  <meta name="keywords" content="Muhammad Umair, Frontend Developer, Firebase, Aptech, SMIT, Saylani, React, Bootstrap Portfolio" />
+  <meta name="author" content="Muhammad Umair" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet" />
+  <link href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" rel="stylesheet" />
+
+  <style>
+    /* Background GIF for entire website */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOXlwY2RwZjljN3NpNGF3YW9sZzYyYWViM24yOGZyaTBzbDkybWppbyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/zgduo4kWRRDVK/giphy.gif') no-repeat center center fixed;
+      background-size: cover;
+      color: #e0e0e0;
+      scroll-behavior: smooth;
+    }
+
+    /* Overlay to darken entire page for readability */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
+    }
+
+    /* Navbar styling */
+    .navbar {
+      background-color: rgba(13, 17, 23, 0.85) !important;
+      backdrop-filter: saturate(180%) blur(10px);
+      border-bottom: 1px solid #0d6efd;
+    }
+    .navbar-brand, .nav-link, .footer-bottom a {
+      color: #fff !important;
+    }
+    .nav-link:hover {
+      color: #0d6efd !important;
+    }
+
+    /* Hero Section */
+    #hero {
+      min-height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 120px 15px 100px;
+      color: white;
+      position: relative;
+      z-index: 1;
+    }
+    #hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 15px #0d6efd;
+    }
+    #hero p {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+      text-shadow: 0 0 10px #0d6efd88;
+    }
+    #hero .social-links a {
+      font-size: 2rem;
+      margin: 0 10px;
+      color: #0d6efd;
+      transition: color 0.3s ease;
+    }
+    #hero .social-links a:hover {
+      color: #4ea1ff;
+    }
+
+    /* Sections background transparent with subtle overlay */
+    section {
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      padding: 40px 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+
+    /* About Section */
+    .about-img {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .about-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.9);
+    }
+    .about-text h2 {
+      font-weight: 700;
+      color: #0d6efd;
+    }
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #c7c7c7;
+    }
+
+    /* Skills */
+    .skill-box {
+      transition: transform 0.3s, color 0.3s;
+      cursor: default;
+      padding: 10px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: white;
+    }
+    .skill-box i {
+      font-size: 48px;
+      transition: transform 0.3s, color 0.3s;
+      display: block;
+      margin: 0 auto 10px auto;
+      color: inherit;
+    }
+    .skill-box:hover i {
+      transform: scale(1.2);
+    }
+    .skill-box p {
+      font-weight: 600;
+      margin: 0;
+    }
+
+    /* Skill Colors */
+    .skill-html { color: #e44d26; }
+    .skill-css { color: #1572b6; }
+    .skill-js { color: #f7df1e; text-shadow: 1px 1px 1px #000;}
+    .skill-firebase { color: #ffca28; }
+    .skill-github { color: #333; }
+    .skill-seo { color: #0e76a8; }
+    .skill-chatbot { color: #6f42c1; }
+
+    /* Project card images */
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .project-card img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.8);
+    }
+    .card {
+      background-color: rgba(30, 30, 30, 0.75);
+      border: none;
+      border-radius: 20px;
+      color: #e0e0e0;
+    }
+    .card-title {
+      color: #0d6efd;
+    }
+    .btn-primary {
+      background-color: #0d6efd;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #0b5ed7;
+    }
+
+    /* Contact Section Form */
+  .contact-body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, rgba(13,17,23,0.9), rgba(13,17,23,0.8)), url('https://media1.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif') center/cover no-repeat fixed;
+  font-family: 'Segoe UI', sans-serif;
+  color: #fff;
+}
+
+.contact-section {
+  padding: 80px 20px 60px;
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  max-width: 600px;
+  margin: 100px auto;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.form-floating input,
+.form-floating textarea {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.form-floating input:focus,
+.form-floating textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 10px #0d6efd55;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+label {
+  color: #ccc;
+}
+
+.btn-send {
+  background: #0d6efd;
+  border: none;
+  font-weight: bold;
+  padding: 12px;
+  border-radius: 50px;
+  width: 100%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-send:hover {
+  background: #0b5ed7;
+  transform: scale(1.02);
+}
+
+.btn-send.active {
+  background: linear-gradient(to right, #0d6efd, #6610f2);
+  animation: pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    box-shadow: 0 0 10px #0d6efd;
+  }
+  to {
+    box-shadow: 0 0 20px #0d6efd;
+  }
+}
+
+/* Toast styling */
+.toast {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Wave Background */
+.wave-container {
+  margin-top: -80px;
+  overflow: hidden;
+}
+
+.wave-container svg {
+  width: 100%;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .contact-section {
+    padding: 40px 20px;
+    margin: 40px 20px;
+  }
+}
+
+
+
+    /* Footer */
+    footer.footer-bottom {
+      background-color: transparent !important;
+      color: #c7c7c7;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    footer.footer-bottom a {
+      color: #0d6efd;
+      margin: 0 10px;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+    footer.footer-bottom a:hover {
+      color: #4ea1ff;
+    }
+
+    /* Chatbot Styles */
+    .chatbot-container {
+      width: 350px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+      background-color: rgba(13, 17, 23, 0.9);
+      overflow: hidden;
+      z-index: 1000;
+      transition: all 0.3s ease;
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+    .chatbot-hidden .chatbot-header,
+    .chatbot-hidden .chatbot-messages,
+    .chatbot-hidden .chatbot-input {
+      display: none;
+    }
+    .chatbot-hidden {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+    }
+    .chatbot-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 60px;
+      background-color: #0d6efd;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .chatbot-icon i {
+      font-size: 28px;
+      color: white;
+    }
+    .chatbot-header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 12px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      user-select: none;
+    }
+    .chatbot-messages {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 15px;
+      background-color: rgba(28, 37, 38, 0.9);
+      color: #fff;
+      font-size: 0.95rem;
+    }
+    .message {
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+    .user-message {
+      background-color: #0d6efd;
+      color: white;
+      margin-left: 20%;
+      margin-right: 10px;
+      align-self: flex-end;
+    }
+    .bot-message {
+      background-color: #2c3e50;
+      color: white;
+      margin-right: 20%;
+      margin-left: 10px;
+      align-self: flex-start;
+    }
+    .chatbot-input {
+      display: flex;
+      padding: 10px;
+      background-color: rgba(28, 37, 38, 0.9);
+      border-top: 1px solid #333;
+    }
+    .chatbot-input input {
+      flex: 1;
+      padding: 8px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      margin-right: 10px;
+      outline: none;
+      background-color: #2b2b2b;
+      color: #fff;
+    }
+    .chatbot-input input::placeholder {
+      color: #aaa;
+    }
+    .chatbot-input button {
+      padding: 8px 15px;
+      background-color: #0d6efd;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .chatbot-input button:hover {
+      background-color: #0b5ed7;
+    }
+    .error-message {
+      background-color: #ff3737e8;
+      color: white;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      #hero h1 {
+        font-size: 2.5rem;
+      }
+      #hero p {
+        font-size: 1.2rem;
+      }
+  .input-icon input:focus,
+  .input-icon textarea:focus {
+  background-color: rgba(13, 110, 253, 0.1); /* match theme */
+  border: 2px solid #0d6efd;
+  box-shadow: 0 0 12px rgba(13, 110, 253, 0.7); /* blue glow */
+  color: #fff;
+  outline: none;
+}
+
+    .chatbot-container {
+        width: 95%;
+        right: 2.5%;
+        bottom: 10px;
+        height: 320px;
+      }
+      .chatbot-hidden {
+        width: 50px;
+        height: 50px;
+      }
+      .chatbot-icon {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+ .footer-glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.social-icons a {
+  font-size: 24px;
+  margin: 0 10px;
+  color: #ccc;
+  transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #0d6efd;
+  transform: scale(1.2);
+}
+
+#typed-skills {
+  font-weight: 700;
+  font-size: 1.6rem;
+  font-family: monospace, monospace;
+}
+
+/* Cursor blinking */
+.cursor {
+  display: inline-block;
+  background-color: white;
+  width: 2px;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Skill colors */
+.skill-html { color: #e44d26; }
+.skill-css { color: #1572b6; }
+.skill-js { color: #f7df1e; color: black; /* for contrast */ }
+.skill-firebase { color: #ffca28; color: black; }
+.skill-seo { color: #0e76a8; }
+.skill-github { color: #333; }
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top shadow">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">Muhammad Umair</a>
+    <button
+      class="navbar-toggler bg-light"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse text-center" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="hero" data-aos="fade-up" style="padding: 100px 20px; text-align: center; color: white;">
+  <div class="container">
+    <h1>Hi, I'm Muhammad Umair</h1>
+    <p>Frontend Developer | Firebase Expert | SEO OPTIMIZER</p>
+    
+    <h2>
+      Skills: 
+      <span id="typed-skills"></span><span class="cursor">|</span>
+    </h2>
+    
+    <div class="social-links" style="margin-top: 20px; font-size: 1.5rem;">
+      <a href="https://www.linkedin.com/in/umair-sagheer-454216242/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://github.com/umair12012" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+      <a href="https://www.instagram.com/muhammadumr3/?utm_source=" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- About Section -->
+<section id="about" data-aos="fade-up">
+  <div class="row align-items-center">
+    <div class="col-md-5 mb-4 mb-md-0 text-center">
+      <img
+        src="./image/umair.png"
+        alt="Muhammad Umair"
+        class="about-img"
+      />
+    </div>
+    <div class="col-md-7 about-text">
+      <h2>About Me</h2>
+      <p>
+        I'm <strong>Muhammad Umair</strong>, a passionate Frontend Developer from
+        Pakistan. I've completed a 3-year diploma in Software Engineering from
+        <strong>Aptech</strong> and advanced practical web development from
+        <strong>Saylani Mass IT Training (SMIT)</strong>.
+      </p>
+      <p>
+        I specialize in building responsive, dynamic websites using
+        <strong>HTML, CSS, JavaScript, Bootstrap, Firebase</strong> and modern
+        frontend tools like <strong>React</strong>. I love turning ideas into
+        visually beautiful and functional websites.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="text-center" data-aos="zoom-in">
+  <h2 class="mb-4 fw-bold text-white">My Skills</h2>
+  <div class="row justify-content-center">
+    <div class="col-6 col-md-2 skill-box skill-html">
+      <i class="uil uil-html5"></i>
+      <p>HTML5</p>
+    </div>
+
+    <div class="col-6 col-md-2 skill-box skill-css">
+      <i class="uil uil-css3-simple"></i>
+      <p>CSS3</p>
+    </div>
+
+    <div class="col-6 col-md-2 skill-box skill-js">
+      <i class="uil uil-java-script"></i>
+      <p>JavaScript</p>
+    </div>
+
+    <div class="col-6 col-md-2 skill-box skill-firebase">
+      <i class="uil uil-fire"></i>
+      <p>Firebase</p>
+    </div>
+
+    <div class="col-6 col-md-2 skill-box skill-github">
+      <i class="uil uil-github"></i>
+      <p>GitHub</p>
+    </div>
+
+    <div class="col-6 col-md-2 skill-box skill-seo">
+      <i class="bi bi-graph-up"></i>
+      <p>SEO Optimization</p>
+    </div>
+
+    <div class="col-6 col-md-2 skill-box skill-chatbot">
+      <i class="bi bi-robot"></i>
+      <p>Chatbot Integration</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" data-aos="fade-up">
+  <h2 class="text-center mb-4 fw-bold">Projects</h2>
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <!-- Sample project cards -->
+      <div class="swiper-slide">
+        <div class="card project-card">
+          <img src="./image/naveed-5ef26shop.web.app_(iPhone 12 Pro).png" alt="Project 1" />
+          <div class="card-body">
+            <h5 class="card-title">Mobile Shop Website</h5>
+            <p class="card-text">
+              A responsive mobile shop website built with Firebase backend and Bootstrap.
+            </p>
+            <a href="https://naveed-5ef26shop.web.app/" target="_blank" class="btn btn-primary">Visit</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-slide">
+        <div class="card project-card">
+          <img src="./image/image.png" alt="Project 2" />
+          <div class="card-body">
+            <h5 class="card-title">Portfolio Website</h5>
+            <p class="card-text">
+              Modern portfolio website with animations and responsive design.
+            </p>
+            <a href="https://github.com/umair12012" target="_blank" class="btn btn-primary">View Code</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add more projects as needed -->
+    </div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- Navigation buttons -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+
+</head>
+<body>
+  <section class="contact-section">
+    <h2 class="text-center fw-bold mb-4">Get In Touch</h2>
+    <form id="contactForm">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="contactName" placeholder="Your Name" required />
+        <label for="contactName">Your Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="contactEmail" placeholder="name@example.com" required />
+        <label for="contactEmail">Email address</label>
+      </div>
+      <div class="form-floating mb-4">
+        <textarea class="form-control" id="contactMessage" placeholder="Write your message here..." style="height: 120px" required></textarea>
+        <label for="contactMessage">Message</label>
+      </div>
+      <button type="submit" class="btn btn-send" id="sendBtn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="successToast" class="toast align-items-center text-bg-success border-0 shadow" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          ✅ Message sent successfully!
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave SVG -->
+  <div class="wave-container">
+    <svg viewBox="0 0 1440 320">
+      <path fill="#0d6efd" fill-opacity="1"
+        d="M0,224L48,213.3C96,203,192,181,288,165.3C384,149,480,139,576,160C672,181,768,235,864,234.7C960,235,1056,181,1152,176C1248,171,1344,213,1392,234.7L1440,256L1440,320L0,320Z">
+      </path>
+    </svg>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+
+
+
+<!-- Chatbot -->
+<div class="chatbot-container chatbot-hidden" id="chatbot">
+  <div class="chatbot-icon" id="chatbotToggle">
+    <i class="bi bi-chat-dots-fill"></i>
+  </div>
+  <div class="chatbot-header">Chat with Me</div>
+  <div class="chatbot-messages" id="chatbotMessages"></div>
+  <div class="chatbot-input">
+    <input type="text" id="chatbotInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-glass py-4">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+    
+    <!-- Contact Info -->
+    <div class="text-white mb-3 mb-md-0 text-center text-md-start">
+      <h6 class="fw-bold">Contact</h6>
+      <p class="mb-1">📧 umairsagheer311@gmail.com</p>
+      <p class="mb-0">📍 Karachi, Pakistan</p>
+    </div>
+
+    <!-- Social Media Links -->
+    <div class="social-icons text-center text-md-end">
+      <h6 class="fw-bold text-white mb-2">Follow Me</h6>
+      <a href="https://github.com/umair12012" target="_blank" class="social-link"><i class="bi bi-github"></i></a>
+      <a href="https://www.linkedin.com/in/umair-sagheer-454216242/" target="_blank" class="social-link"><i class="bi bi-linkedin"></i></a>
+      <a href="https://www.instagram.com/muhammadumr3/" target="_blank" class="social-link"><i class="bi bi-instagram"></i></a>
+    </div>
+    
+  </div>
+  <div class="text-center mt-3 text-white-50 small">
+    &copy; 2025 Muhammad Umair | Frontend Developer
+  </div>
+</footer>
+
+  
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+  AOS.init();
+
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      576: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      992: { slidesPerView: 3 },
+    },
+  });
+
+  // Chatbot toggle button
+  const chatbot = document.getElementById('chatbot');
+  const chatbotToggle = document.getElementById('chatbotToggle');
+  chatbotToggle.addEventListener('click', () => {
+    chatbot.classList.toggle('chatbot-hidden');
+  });
+
+  // Chatbot messages container
+  const messagesContainer = document.getElementById('chatbotMessages');
+
+  // Simple bot responses for demo
+  function getBotResponse(message) {
+    const msg = message.toLowerCase();
+    if (msg.includes('hello') || msg.includes('hi')) return 'Hello! How can I help you today?';
+    if (msg.includes('portfolio')) return 'You can check my projects in the Projects section.';
+    if (msg.includes('skills')) return 'I am skilled in HTML, CSS, JavaScript, Firebase, and more.';
+    if (msg.includes('contact')) return 'You can contact me using the contact form or email.';
+    return "Sorry, I didn't understand that. Please try asking something else.";
+  }
+
+  // Send message handler
+  function sendMessage() {
+    const input = document.getElementById('chatbotInput');
+    const userText = input.value.trim();
+    if (!userText) return;
+
+    // Show user message
+    addMessage(userText, 'user-message');
+    input.value = '';
+
+    // Simulate bot typing delay
+    setTimeout(() => {
+      const botReply = getBotResponse(userText);
+      addMessage(botReply, 'bot-message');
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }, 700);
+  }
+
+  // Add message to chat window
+  function addMessage(text, className) {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${className}`;
+    msgDiv.textContent = text;
+    messagesContainer.appendChild(msgDiv);
+  }
+
+  // Contact form submission simulation
+  function submitForm(event) {
+    event.preventDefault();
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    alert('Thank you for your message! I will get back to you soon.');
+
+    event.target.reset();
+  }
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const btn = document.getElementById('sendBtn');
+  btn.classList.add('active');
+  btn.disabled = true;
+
+  setTimeout(() => {
+    // Clear form fields
+    document.getElementById('contactName').value = '';
+    document.getElementById('contactEmail').value = '';
+    document.getElementById('contactMessage').value = '';
+
+    btn.classList.remove('active');
+    btn.disabled = false;
+
+    // Show toast
+    const toastElement = document.getElementById('successToast');
+    const toast = new bootstrap.Toast(toastElement);
+    toast.show();
+  }, 1000);
+});
+
+const skills = [
+  { name: "HTML5", className: "skill-html" },
+  { name: "CSS3", className: "skill-css" },
+  { name: "JavaScript", className: "skill-js" },
+  { name: "Firebase", className: "skill-firebase" },
+  { name: "SEO Optimization", className: "skill-seo" },
+  { name: "GitHub", className: "skill-github" },
+];
+
+const typedSkillsElem = document.getElementById("typed-skills");
+let skillIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeSkill() {
+  const currentSkill = skills[skillIndex].name;
+  const currentClass = skills[skillIndex].className;
+  let displayedText = typedSkillsElem.innerHTML.replace(/<[^>]+>/g, ""); // strip tags for accurate length
+
+  if (!isDeleting) {
+    // Add characters
+    if (charIndex <= currentSkill.length) {
+      // Build partial text with colored span
+      typedSkillsElem.innerHTML = `<span class="${currentClass}">${currentSkill.substring(0, charIndex)}</span>`;
+      charIndex++;
+      setTimeout(typeSkill, 120);
+    } else {
+      // Wait a bit, then start deleting
+      isDeleting = true;
+      setTimeout(typeSkill, 1000);
+    }
+  } else {
+    // Delete characters
+    if (charIndex >= 0) {
+      typedSkillsElem.innerHTML = `<span class="${currentClass}">${currentSkill.substring(0, charIndex)}</span>`;
+      charIndex--;
+      setTimeout(typeSkill, 60);
+    } else {
+      // Move to next skill
+      isDeleting = false;
+      skillIndex = (skillIndex + 1) % skills.length;
+      setTimeout(typeSkill, 300);
+    }
+  }
+}
+
+// Start typing on page load
+document.addEventListener("DOMContentLoaded", () => {
+  typeSkill();
+});
+
+
+</script>
+
+</body>
+</html>
